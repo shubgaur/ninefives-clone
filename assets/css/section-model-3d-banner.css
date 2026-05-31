@@ -1,0 +1,207 @@
+.section-model-3d-banner {
+  padding: 0;
+  margin: 0;
+}
+
+.model-3d-banner {
+  --model-3d-banner-header-offset: 0px;
+  --model-3d-banner-vh: 100vh;
+  --model-3d-banner-vh: 100dvh;
+  --model-3d-banner-vh: 100lvh;
+  --model-3d-banner-vh: 100svh;
+  position: relative;
+  display: block;
+  width: 100%;
+  height: calc((1 + var(--scroll-viewports, 5)) * var(--model-3d-banner-vh));
+  background: radial-gradient(ellipse 95% 80% at 40% 28%, #161b23, #080a0e, #000);
+  color: #f8fafc;
+  overflow: clip;
+}
+
+.model-3d-banner__stage {
+  position: sticky;
+  top: var(--model-3d-banner-header-offset);
+  width: 100%;
+  height: calc(var(--model-3d-banner-vh) - var(--model-3d-banner-header-offset));
+  overflow: hidden;
+  background: radial-gradient(ellipse 95% 80% at 40% 28%, #161b23, #080a0e, #000);
+}
+
+.model-3d-banner__frame {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.model-3d-banner__canvas {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.model-3d-banner__overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.model-3d-banner__label {
+  position: absolute;
+  top: 3.2rem;
+  left: 3.6rem;
+  padding: 2.2rem 2.8rem;
+  border-radius: 0;
+  border: 1px solid var(--nf-accent);
+  background: rgba(15, 23, 42, 0.92);
+  box-shadow: 0 0 1.2rem rgba(var(--nf-accent-rgb, 56, 189, 248), 0.22);
+  color: #f8fafc;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 2.8rem;
+  letter-spacing: 0.01em;
+  line-height: 1.25;
+  white-space: nowrap;
+  width: max-content;
+  opacity: 0;
+}
+
+.model-3d-banner__label-detail {
+  font-size: 0.6667em;
+  margin-top: 0.6rem;
+  color: #e2e8f0c7;
+  letter-spacing: 0.015em;
+  font-weight: 400;
+  white-space: normal;
+  max-width: 48rem;
+}
+
+.model-3d-banner__hint {
+  position: absolute;
+  right: 2.4rem;
+  bottom: 2.4rem;
+  padding: 0.8rem 1.2rem;
+  border-radius: 0;
+  background: rgba(15, 23, 42, 0.92);
+  border: 1px solid var(--nf-accent);
+  color: var(--nf-accent);
+  font-size: 1.2rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  box-shadow: 0 0 0.8rem rgba(var(--nf-accent-rgb, 56, 189, 248), 0.18);
+}
+
+.model-3d-banner__hint [data-progress] {
+  color: var(--nf-accent);
+}
+
+.model-3d-banner__intro {
+  position: absolute;
+  z-index: 3;
+  left: 50%;
+  bottom: 6rem;
+  transform: translate(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.8rem;
+  text-align: center;
+  padding: 0 2rem;
+  max-width: min(72rem, 92vw);
+}
+
+.model-3d-banner__heading {
+  margin: 0 0 0.8rem;
+  font-size: clamp(2.4rem, 4vw, 4.4rem);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+
+.model-3d-banner__subheading {
+  margin: 0;
+  font-size: clamp(1.4rem, 1.6vw, 1.8rem);
+  color: #e2e8f0c7;
+}
+
+.model-3d-banner__newsletter {
+  width: min(100%, 36rem);
+}
+
+.model-3d-banner__newsletter .newsletter-form {
+  width: 100%;
+}
+
+.model-3d-banner__fallback {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+.model-3d-banner__fallback--hidden {
+  opacity: 0;
+}
+
+.model-3d-banner--using-fallback .model-3d-banner__canvas,
+.model-3d-banner--using-fallback .model-3d-banner__overlay {
+  display: none;
+}
+
+.model-3d-banner--using-fallback {
+  height: var(--model-3d-banner-vh);
+}
+
+.model-3d-banner--using-fallback .model-3d-banner__stage {
+  position: relative;
+  height: calc(var(--model-3d-banner-vh) - var(--model-3d-banner-header-offset));
+  display: block;
+}
+
+.model-3d-banner--using-fallback .model-3d-banner__frame {
+  width: 100%;
+  height: 100%;
+}
+
+@media screen and (max-width: 989px) {
+  .model-3d-banner__label {
+    top: 1.4rem;
+    left: 1.4rem;
+    padding: 1.2rem 1.6rem;
+    font-size: 1.8rem;
+  }
+
+  .model-3d-banner__label-detail {
+    max-width: 28rem;
+  }
+
+  .model-3d-banner__hint {
+    right: 1.2rem;
+    bottom: 1.2rem;
+  }
+
+  .model-3d-banner__intro {
+    bottom: 4.8rem;
+    gap: 1.2rem;
+    max-width: min(32rem, 92vw);
+  }
+
+  .model-3d-banner__newsletter {
+    width: 100%;
+  }
+}
